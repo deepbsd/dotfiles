@@ -9,8 +9,7 @@ of which have their own dotfiles for configuration.
 
 # Dependencies
 
-fonts:  Yosemite- System San Francisco Display
-		font-awesome
+fonts:  (Yosemite) System San Francisco Display, font-awesome
 
 i3blocks: maybe need to build from source
 
@@ -24,7 +23,9 @@ themes:  Arc darker, GTK themes, firefox/chrome dark themes
 
 custom icons:  faenza, Arc, etc...
 
-compton: 
+compton: also need some kind of terminal, I chose gnome-terminal
+
+feh: puts wallpaper on, nitrogen also works well as a graphical tool for wallpaper
 
 rofi:  replaces dmenu
 
