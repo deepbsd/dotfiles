@@ -9,16 +9,29 @@ of which have their own dotfiles for configuration.
 
 # Dependencies
 
-fonts:  Yosemite- System San Francisco Display
-		font-awesome
-i3blocks: maybe need to build from source
-systat: for i3block status
-i3lock: 
-lxappearance:
-themes:  Arc darker, GTK themes, firefox/chrome dark themes
-custom icons:  faenza, Arc, etc...
-compton: 
-rofi:  replaces dmenu
+* fonts:  (Yosemite) System San Francisco Display, 
+	* font-awesome
+
+* i3blocks: maybe need to build from source
+
+* systat: for i3block status
+
+* i3lock: 
+
+* lxappearance: most distros have native packages
+
+* themes:  Arc darker, GTK themes, firefox/chrome dark themes
+
+* custom icons:  faenza, Arc, Papirus, etc...
+
+* compton: adds transparency to desktop
+
+* terminal: I chose gnome-terminal, but there are tons of these
+
+* feh: puts wallpaper on 
+	* nitrogen also works well as a graphical tool for wallpaper
+
+* rofi:  replaces dmenu
 
 perhaps more--will update as necessary
 
