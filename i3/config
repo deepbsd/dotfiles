@@ -14,7 +14,7 @@ set $mod Mod1
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 #font pango:monospace 8
-font pango:System San Francisco Display 12
+font pango:System San Francisco Display 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -32,12 +32,15 @@ floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+Return exec gnome-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # --- moved rofi callout to bottom of file --- #
+
+# --- set the screenresolution the way I want it --- #
+exec --no-startup-id xrandr --output DP-0 --off --output DVI-D-0 --off --output DP-1 --off --output HDMI-0 --mode 2560x1440 --pos 0x0 --rotate normal
 
 # change focus
 bindsym $mod+j focus left
@@ -163,6 +166,12 @@ bindsym $mod+r mode "resize"
 
 # Some personal additions and keybindings...
 # ##########################################
+
+# ----- installed i3-gaps ----- #
+for_window [class="^.*"] border pixel 0
+gaps inner 30
+gaps outer 20
+
 # -----  lock screen -----#
 bindsym $mod+Shift+x exec i3lock --color "$bg-color"
 
@@ -170,10 +179,20 @@ bindsym $mod+Shift+x exec i3lock --color "$bg-color"
 bindsym $mod+Control+Right workspace next
 bindsym $mod+Control+Left workspace prev
 
-# ----- pulse audio controls -----#
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #increase sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle #mute sound
+# ----- amixer audio controls -----#
+# ----- pulse audio audio controls -----#
+exec pasystray
+#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #increase sound volume
+#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle #mute sound
+#bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
+#bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master '3%+'""
+#bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
+#bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master '1%-'"
+#bindsym XF86AudioMute exec amixer -q set Master toggle
+#bindsym XF86AudioMute exec "amixer -D pulse set Master toggle"
+#bindsym XF86AudioMicMute exec "amixer -D pulse sset Capture toggle"
+
 
 #----- media player controls -----#
 bindsym XF86AudioPlay exec playerctl play
@@ -227,3 +246,4 @@ bindsym $mod+d exec rofi -show run -bg "$bg-color" -fg "$text-color" -opacity "8
 
 #exec_always feh --bg-scale /home/dsj/wallpaper/waterfall.jpg
 exec --no-startup-id compton -f
+exec --no-startup-id nm-applet
