@@ -1,46 +1,38 @@
 " Set version info and set wrapmargin to ten
-version 7.4
-" wrap margin
-set wm=10
-" :set tw=69
-" :set aw
-
-" auto indent
-set ai
-" smart indent
-set si
-" line numbers
-set number
-
-" I like a larger history file
-set history=1000
-
-
+"version 7.5
+:set wm=10
+:set tw=80
+:set aw
+:set ai
+:set number
 
 " Add ability to comment out blocks of lines (need line numbers)
 " Use Shift-v then press '#'.  Press '-#' to remove (with Shft-v)
 vnoremap # :s#^#\##<cr>
 vnoremap -# :s#^\###<cr>
 
-"""""""""""""""""""""""""""""""""""""
-""""" Vim Plugins from YouTube  """""
-"""""""""""""""""""""""""""""""""""""
-" for Pathogen et al
+" For rust files
+call plug#begin('~/.vim/autoload')
+Plug 'rust-lang/rust.vim'
+
+"""""""""""""""""""""""""""""""
+"""  VIM PLUGINS
+"""""""""""""""""""""""""""""""
 execute pathogen#infect()
-"syntax on
 filetype plugin indent on
 
 set tabstop=4
-set colorcolumn=
+set colorcolumn=110
 
+set statusline=[%n]\ %f
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
+let g:syntastic_check_on_open =1
+let g:syntastic_check_on_wq = 0
 
 
 " For C and Python files
@@ -55,7 +47,7 @@ let g:syntastic_check_on_wq = 1
 " Number of spaces that a pre-existing tab is equal to.
 " For the amount of space used for new tab use shiftwidth.
 set ruler 
-au BufRead,BufNewFile *py,*pyw*.c,*.h,*.pl,*.pm set tabstop=4
+au BufRead,BufNewFile *py,*pyw*.c,*.h set tabstop=4
 
 " What to use for an indent.  This will affect Ctl-T and
 " 'autoindent'.  Python: 4 spaces
@@ -63,14 +55,14 @@ au BufRead,BufNewFile *.py,*pyw,*.pl,*.pm set shiftwidth=4
 au BufRead,BufNewFile *.py,*.pyw,*.pl,*.pm set expandtab
 fu Select_c_style()
 	if search('^\t', 'n', 150)
-		set shiftwidth=8
+		set shiftwidth=4
 		set noexpandtab
 	el
 		set shiftwidth=4
 		set expandtab
 	en
 endf
-au BufRead,BufNewFile *.c,*.h call Select_c_style()
+au BufRead,BufNewFile *.c,*.h,*.pl,*.pm call Select_c_style()
 au BufRead,BufNewFile Makefile* set noexpandtab
 
 " Use the below highlight group when displaying bad whitespace is
@@ -81,12 +73,12 @@ highlight BadWhitespace ctermbg=red guibg=red
 au BufRead,BufNewFile *.py,*.pyw,*.pl,*.pm match BadWhitespace /^\t\+/
 
 " Make trailing whitespace be flagged as bad.
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h,*.pl,*.pm match BadWhitespace /\s\+$/
+au BufRead,BufNewFile *.py,*.pyw,*.pl,*.pm,*.c,*.h match BadWhitespace /\s\+$/
 
 " Wrap text after a certain number of characters
 " Python: 79
 " C: 79
-au BufRead,BufNewFile *.py,*.pyw,*.c*.h set textwidth=79
+au BufRead,BufNewFile *.py,*.pyw,*.pl,*.pm,*.c*.h set textwidth=79
 
 " Turn off settings in 'formatoptions' relating to comment
 " formatting.  -c : do not automatically insert the comment leader
@@ -98,14 +90,14 @@ au BufRead,BufNewFile *.py,*.pyw,*.c*.h set textwidth=79
 "  Python: not needed
 "  C: prevents insertion of '*' at the beginning of every line in a
 "  comment.
-au BufRead,BufNewFile *.c,*.h set formatoptions-=c formatoptions-=o formatoptions-=r
+au BufRead,BufNewFile *.c,*.h set formatoptions=-c formatoptions-=o formatoptions-=r
 
 " Use UNIX (\n) line endings
 " Only used for new files so as to not force existing files to change
 " their line endings.
 " Python: yes
 " C: yes
-au BufNewFile *.py,*.pyw,*.c,*.h,*.pl,*.pm set fileformat=unix
+au BufNewFile *.py,*.pyw,*.pl,*.pm,*.c,*.h set fileformat=unix
 
 " Some terminfo stuff.  Hey, it was recommended by 
 " someone or other! :-)
@@ -125,16 +117,8 @@ else
   set term=$TERM
 endif  
 
-" ########  THOUGHTBOT  ##############
-" Got this from thoughtbot
-set nocompatible
-"syntax enable
-"filetype plugin on
-set path+=**
-set wildmenu
-
-" I gotsta have my syntax!  " overcome by syntax enable
-":syntax on
+" I gotsta have my syntax!
+:syntax on
 
 "===================================
 "  Latex  Latex  Latex  Latex  Latex
@@ -160,9 +144,6 @@ set wildmenu
 
 :map _n 0i#j0
 
-" turn on NERDTree
-:map <C-n> :NERDTree<CR>
-
 "===================================
 " Mappings for editing my .vimrc
 "===================================
@@ -173,7 +154,7 @@ set wildmenu
 "  HTML  HTML  HTML  HTML  HTML  HTML
 "=======================================
 
-:iab Hnew  <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN"><HTML><HEAD><META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1"><META NAME="GENERATOR" CONTENT="VIM 5.0"><META NAME="Author" CONTENT="Dave Jackson <dsj@dsj.net>"><META NAME="Description" CONTENT="More of Dave Jackson's Drivel and Cruft."><TITLE></TITLE></HEAD><BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EF" VLINK="#55188A" ALINK="#FF0000"><BR></BODY></HTML>?</TITLE>i
+:iab Hnew  <!DOCTYPE html><HTML><HEAD><META HTTP-EQUIV="Content-Type" CONTENT="text/html"; charset="utf-8"><META NAME="GENERATOR" CONTENT="VIM 5.0"><META NAME="Author" CONTENT="Dave Jackson <dsj@dsj.net>"><META NAME="Description" CONTENT="More of Dave Jackson's Drivel and Cruft."><TITLE></TITLE></HEAD><BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EF" VLINK="#55188A" ALINK="#FF0000"><BR></BODY></HTML>?</TITLE>i
 
 :iab Hbr <BR>
 :iab H1 <H1></H1>4hi
@@ -208,16 +189,4 @@ set wildmenu
 "==============================
 noremap <F8> :so `/home/dsj/bin/vimspell %`:!/home/dsj/bin/vimspell % -r
 
-
-set t_Co=256
-"colorscheme xoria256
-"colorscheme elflord
-"colorscheme writer
-"colorscheme pablo
-colorscheme desert
-"colorscheme ron
-"colorscheme slate
-"colorsheme papaya
-"colorsheme underflow
-set background=dark
-syntax on
+colorscheme elflord
