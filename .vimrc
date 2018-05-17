@@ -210,11 +210,11 @@ noremap <F8> :so `/home/dsj/bin/vimspell %`:!/home/dsj/bin/vimspell % -r
 
 
 set t_Co=256
-"colorscheme xoria256
+colorscheme xoria256
 "colorscheme elflord
 "colorscheme writer
 "colorscheme pablo
-colorscheme desert
+"colorscheme desert
 "colorscheme ron
 "colorscheme slate
 "colorsheme papaya

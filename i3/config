@@ -173,7 +173,7 @@ gaps inner 30
 gaps outer 20
 
 # -----  lock screen -----#
-bindsym $mod+Shift+x exec i3lock --color "$bg-color"
+bindsym $mod+Shift+x exec i3lock -d -e --color 000000
 
 # ----- Next/Previous workspace ----- #
 bindsym $mod+Control+Right workspace next
