@@ -1,7 +1,18 @@
+# .bashrc
+
+# Uncomment the following line if you don't like systemctl's auto-paging feature:
+# export SYSTEMD_PAGER=
+
+# User specific aliases and functions
+
+
 # last edited for Macbook Pro "Daisy" on 6-25-2016
 
 #source ~/.bash_profile
 
+#export LSCOLORS=exfxcxdxbxegedabagacad
+export LSCOLORS=GxFxCxDxBxegedabagaced
+#export LS_COLORS=di=36:ln=35:so=32:pi=34:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43
 
 #################################
 #  Environment preferences
@@ -12,9 +23,9 @@ set -o emacs
 umask	022
 
 # set up environment for Fedora
-if [ -f /etc/bashrc ]; then
-    . /etc/bashrc
-fi
+#if [ -f /etc/bashrc ]; then
+#    . /etc/bashrc
+#fi
 
 
 ###################################
@@ -26,10 +37,6 @@ ul=/usr/local
 ulb=/usr/local/bin
 uls=/usr/local/src
 ull=/usr/local/library
-myblog=$HOME/public_html/daveblog/
-thinkful=$HOME/bin/thinkful/projects
-
-export GOPATH=$HOME/bin/golang
 
 #------ Skillcrush classes ------------
 sc=$HOME/bin/ruby/skillcrush
@@ -47,14 +54,15 @@ scwp=$HOME/public_html/accelerate
 ####################################
 
 alias pyt='python3'
-alias mp='/usr/bin/afplay'
-alias updatedb='sudo /usr/libexec/locate.updatedb'
+alias mp='/usr/bin/play'
+#alias updatedb='sudo /usr/libexec/locate.updatedb'
 alias h='fc -l'
 #alias bh="less ~/.bash-help"
 #alias ct='changetheme'
 alias j=jobs
 alias m=$PAGER
 alias ls='ls --color=auto'
+#alias ls='ls -G'
 alias ll='ls -l --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
@@ -68,7 +76,6 @@ alias sd='echo $(date "+%A %b %d, %Y")'
 alias st='echo $(date "+%T")'
 alias hist="history"
 alias dirs="dirs -v"
-alias findip="ifconfig | grep 192 | cut -c21-33"
 
  
 # # be paranoid
@@ -81,22 +88,21 @@ alias cp='cp -ip'
 ###################################
 
 export OREILLY='djackson@cold.oreillyschool.com:workspace'
-export GIT_CONFIG='$HOME/.gitconfig'
 export EDITOR=vim
-export PATH=$PATH:$HOME/bin:/usr/local/games:/usr/local/bin:/usr/lib/java/bin:/usr/local/heroku/bin:$HOME/.cargo/bin
+export PATH=$PATH:$HOME/bin:/usr/local/games:/usr/local/bin:/usr/lib/java/bin
 #export PGPPATH=/home/dsj/.pgp
 export PAGER=less
 export TMP=$HOME/tmp
 export WHOIS_SERVER=whois.geektools.com
 #export NNTPSERVER=news.east.earthlink.net
-export TERM=xterm-256color
+#export TERM=xterm-color
 #export MYCOL="http://www.computoredge.com/sandiego/Editorial/idon'tdo.htm"
 #export JAVA_PATH=/home/dsj/src/jre1.7_71
 
 # For the paragraph reformatter called par
 #export PARINIT='rTbgqR B=.,?_A_a Q=_s>|'
 
-export IRC_SERVERS_FILE="~/.servers"
+#export IRC_SERVERS_FILE="~/.servers"
 export IRCNICK="dsj"
 #export IRCNAME="David S. Jackson <dsj@dsj.net>"
 export IRCNAME="David S. Jackson <deepbsd@yahoo.com>"
@@ -106,10 +112,9 @@ export IRCFINGER="Just exactly what more about me do you need to know???  Don't 
 #PS1="`whoami`@`hostname | sed 's/\..*//'`"
 #  This is default Mac bashprompt...
 #PS1="\h:\W \u\$ "
-#PS1="[\u@\h \W \$(parse_git_branch) ]$ "
-#PS1="[\u@\h \W \$(parse_git_branch) ]$ "
-
-PS1="[\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\W \[\033[00m\]\$(parse_git_branch) ]\$ "
+#PS1="[\u@\h \W]$ "
+#PS1="\u@\h:\w> "
+PS1="[\u@\h \W \$(parse_git_branch)]$ "
 PS2="> "
 #case `id -u` in
 # 	0) PS1="${PS1}# ";;
@@ -124,7 +129,7 @@ PS2="> "
 #   Functions
 #################################
 
-# create a blogpost for jekyll in ~/public_html/daveblog/
+# create a blogpost for jekyll in ~/public_html/daveblog/_posts
 createpost()
 {
   date=$(date --rfc-3339='seconds')
@@ -144,20 +149,25 @@ date: ${date}
 categories: ${categories}
 ---
 End_of_Post
-
-  echo "Your post ${filename} has been created!"
+  
+echo "Your post ${filename} has been created!"
 }
 
 # Find info on CPU archetecture on both
 # Linux and OSX
 findcpu()
 {
-  if (uname -s | grep 'Darwin' &>/dev/null); then
+  if [ `uname -s` == 'Darwin' ]; then
     CPU_INFO=`sysctl -n machdep.cpu.brand_string`
   else
     CPU_INFO=`cat /proc/cpuinfo | grep 'model name' | head -n1 | cut -c14-`
   fi
   echo $CPU_INFO
+}
+
+# this puts your current git branch in your PS1 variable
+parse_git_branch(){
+ git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
 # Create playlist for mpg123 on the fly
@@ -173,11 +183,6 @@ mlist()
 }
 
 # window manager choice function removed 6-8-2016
-
-# enable git branch tracking
-parse_git_branch(){
-  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-}
 
 # history function
 his()
@@ -257,8 +262,8 @@ case "$pchoice" in
           local COLOR2="\[\033[1;36m\]"
           local COLOR3="\[\033[1;30m\]"
           local COLOR4="\[\033[0m\]"
-          PS1="$COLOR3Ú$COLOR1Ä$COLOR2($COLOR1\u$COLOR3@$COLOR1\h$COLOR2)$COLOR1Ä$COLOR2($COLOR1\#$COLOR3/$COLOR1$GRAD1$COLOR2)$COLOR1Ä$COLOR2($COLOR1\$(date +%I:%M%P)$COLOR3:$COLOR1\$(date +%m/%d/%y)$COLOR2)$COLOR1Ä$COLOR3-$COLOR4\n$COLOR3À$COLOR1Ä$COLOR2($COLOR1\$$COLOR3:$COLOR1\w$COLOR2)$COLOR1Ä$COLOR3-$COLOR4 "
-          PS2="$COLOR2Ä$COLOR1Ä$COLOR3-$COLOR4 " 
+          PS1="$COLOR3Ãš$COLOR1Ã„$COLOR2($COLOR1\u$COLOR3@$COLOR1\h$COLOR2)$COLOR1Ã„$COLOR2($COLOR1\#$COLOR3/$COLOR1$GRAD1$COLOR2)$COLOR1Ã„$COLOR2($COLOR1\$(date +%I:%M%P)$COLOR3:$COLOR1\$(date +%m/%d/%y)$COLOR2)$COLOR1Ã„$COLOR3-$COLOR4\n$COLOR3Ã€$COLOR1Ã„$COLOR2($COLOR1\$$COLOR3:$COLOR1\w$COLOR2)$COLOR1Ã„$COLOR3-$COLOR4 "
+          PS2="$COLOR2Ã„$COLOR1Ã„$COLOR3-$COLOR4 " 
   ;;
   fire)  local GRAD1='\[\333\262\261\260\]'
          local GRAD2='\[\260\261\262\333\]'
@@ -288,7 +293,7 @@ case "$pchoice" in
   macbook) PS1="\h:\W \u\$ "
            PS2="> "
   ;;
-  suse)   PS1="\u@\h:\w/ > "
+  suse)   PS1="\u@\h:\w> "
           PS2="> "
   ;;
   white)  PS1="\[\033[37;47;1m\]\333\262\261\260\[\033[37;47;1m\]\u@\h\[\033[0m\033[37;40m\]\333\262\261\260\[\033[37;40;1m\] \d \$(date +%I:%M:%S%P) \n\[\033[37;40;1m\]\w/\[\033[0m\] " 
@@ -306,33 +311,14 @@ case "$pchoice" in
 esac
 
 export PS1 PS2
-
 }
 
 
-####################################################
-###    Miscelanious  Stuff for other programs
-####################################################
 
-# fire off compton compositor for transparency in i3wm only...
-#if ! pgrep -x "compton" > /dev/null
-#then
-#compton &
-#fi
 
-# put a wallpaper on the root window if it doesn\'t exist already
-feh --bg-scale ~/wallpaper/SanFranGGBridge4K.jpg
-
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # added by travis gem
-[ -f /home/dsj/.travis/travis.sh ] && source /home/dsj/.travis/travis.sh
+#[ -f /home/dsj/.travis/travis.sh ] && source /home/dsj/.travis/travis.sh
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-# RVM is the Ruby Version Manager
-export PATH="$PATH:$HOME/.rvm/bin"
-
-[[ -s "$HOME/.rvm/scripts/rvm"  ]] && source "$HOME/.rvm/scripts/rvm"
-
-# source the fzf startup configs.  Also use extended regex matching configs
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-export FZF_DEFAULT_OPS="--extended"
