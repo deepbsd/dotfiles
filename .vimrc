@@ -5,6 +5,21 @@ set wm=10
 " :set tw=69
 " :set aw
 
+" store swap and backup files in $TMP
+:set directory=/home/dsj/tmp
+:set backupdir=/home/dsj/tmp
+
+" reread files into buffers if they change on disk
+" such as with changing git branches...
+set autoread
+au CursorHold * checktime
+
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set mouse=a
+
+set colorcolumn=
 " auto indent
 set ai
 " smart indent
@@ -30,18 +45,26 @@ execute pathogen#infect()
 "syntax on
 filetype plugin indent on
 
-set tabstop=4
-set colorcolumn=
+" EMMET is enabled in the HTML section
 
+" enable fuzzy file finder
+set rtp+=~/.fzf
+
+" improve the status line
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%{fugitive#statusline()}
 set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
+" enable syntax checking
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
 
+" for indentLine
+let g:indentLine='|'
+let g:indentLine_setColrs = 0
 
 " For C and Python files
 "
@@ -173,29 +196,8 @@ set wildmenu
 "  HTML  HTML  HTML  HTML  HTML  HTML
 "=======================================
 
-:iab Hnew  <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN"><HTML><HEAD><META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1"><META NAME="GENERATOR" CONTENT="VIM 5.0"><META NAME="Author" CONTENT="Dave Jackson <dsj@dsj.net>"><META NAME="Description" CONTENT="More of Dave Jackson's Drivel and Cruft."><TITLE></TITLE></HEAD><BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EF" VLINK="#55188A" ALINK="#FF0000"><BR></BODY></HTML>?</TITLE>i
-
-:iab Hbr <BR>
-:iab H1 <H1></H1>4hi
-:iab H2 <H2></H2>4hi
-:iab H3 <H3></H3>4hi
-:iab H4 <H4></H4>4hi
-:iab H5 <H5></H5>4hi
-:iab H6 <H6></H6>4hi
-:iab H7 <H7></H7>4hi
-:iab H8 <H8></H8>4hi
-
-:iab Hul <UL><LI></LI></UL>k0/</h
-:iab Hol <OL><LI></LI></OL>k0/</h
-:iab Hli <LI></LI>4hi  
-:iab Ha <a href=":r!cat /dev/ttykJx$a"></a>?</a>i
-:iab Himg <IMG SRC="#">2h
-:iab Hr <HR NOSHADE>
-:iab Hem <EM></EM>?</EM>i
-
-:iab Hp <P></P>?</P>i
-
-:iab Hattrib gg/<\/BODY>i<BR><HR><FONT SIZE=-1><A HREF="http://www.dsj.net">David S. Jackson</A>Marietta, GA.<BR>k:r!sdA</FONT>
+" enable EMMET
+let g:user_emmet_mode='a'    "enable all function in all mode."
 
 "==============================
 "    C and C++ macros

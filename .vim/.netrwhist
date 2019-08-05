@@ -1,4 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
-let g:netrw_dirhist_1='/home/dsj/bin/OST/Python1/screenshots'
-let g:netrw_dirhist_2='/home/dsj/bin'
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/home/dsj/bin/thinkful/projects/codeDrills-api/src/js'
+let g:netrw_dirhist_2='/home/dsj/bin/thinkful/projects/codeDrills-api/src'
+let g:netrw_dirhist_3='/home/dsj/bin/thinkful/projects/codeDrills-api/src/js'
