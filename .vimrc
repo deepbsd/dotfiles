@@ -1,5 +1,5 @@
 " Set version info and set wrapmargin to ten
-version 7.4
+" version 7.4
 " wrap margin
 set wm=10
 " :set tw=69
@@ -55,6 +55,8 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%{fugitive#statusline()}
 set statusline+=%*
+
+set cursorline
 
 " enable syntax checking
 let g:syntastic_always_populate_loc_list = 0
