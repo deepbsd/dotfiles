@@ -41,6 +41,7 @@ create_dir(){
    [ -d "$target_dir/$dir" ] && exit 0
    mkdir "$target_dir/$dir"
    echo "$target_dir/$dir created..."
+   return 1
 }
 
 # if the directory existx and is empty, 
