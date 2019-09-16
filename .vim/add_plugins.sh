@@ -21,6 +21,7 @@ myplugins=(
     'git@github.com:Yggdroot/indentLine.git'
     'git@github.com:mattn/emmet-vim.git'
     'git@github.com:jiangmiao/auto-pairs.git'
+    'git@github.com:scrooloose/nerdtree.git'
     )
 
 # target dir
