@@ -213,6 +213,18 @@ let g:user_emmet_mode='a'    "enable all function in all mode."
 noremap <F8> :so `/home/dsj/bin/vimspell %`:!/home/dsj/bin/vimspell % -r
 
 
+"==============================
+"   Powerline
+"==============================
+python3 from powerline.vim import setup as powerline_setup
+python3 powerline_setup()
+python3 del powerline_setup
+set laststatus=2  "Always display statusline in all windows"
+set showtabline=2   "Always display the tabline, even if only 1 tab"
+set noshowmode  "Hide the default mode text eg -- INSERT -- below statusline"
+
+
+
 set t_Co=256
 colorscheme xoria256
 "colorscheme elflord

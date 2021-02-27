@@ -11,9 +11,9 @@ set -o emacs
 # file permissions: rwxr-xr-x
 umask	022
 
-# set up environment for Fedora
-if [ -f /etc/bashrc ]; then
-    . /etc/bashrc
+# set up environment for Arch
+if [ -f /etc/bash.bashrc ]; then
+    . /etc/bash.bashrc
 fi
 
 
@@ -29,7 +29,7 @@ ull=/usr/local/library
 myblog=$HOME/public_html/daveblog/
 thinkful=$HOME/bin/thinkful/projects
 
-export GOPATH=$HOME/bin/golang
+#export GOPATH=$HOME/bin/golang
 
 #------ Skillcrush classes ------------
 sc=$HOME/bin/ruby/skillcrush
@@ -48,12 +48,12 @@ scwp=$HOME/public_html/accelerate
 
 alias pyt='python3'
 alias mp='/usr/bin/afplay'
-alias updatedb='sudo /usr/libexec/locate.updatedb'
+#alias updatedb='sudo /usr/libexec/locate.updatedb'
 alias h='fc -l'
 #alias bh="less ~/.bash-help"
 #alias ct='changetheme'
 alias j=jobs
-alias m=$PAGER
+alias m="$PAGER"
 alias ls='ls --color=auto'
 alias ll='ls -l --color=auto'
 alias egrep='egrep --color=auto'
@@ -123,6 +123,11 @@ PS2="> "
 #################################
 #   Functions
 #################################
+
+# Use liquidctl to set colors on corsair h100i platinum
+liq_led(){
+    liquidctl set led color fixed "rgb(11,45,138)"
+}
 
 # create a blogpost for jekyll in ~/public_html/daveblog/
 createpost()
@@ -309,6 +314,15 @@ export PS1 PS2
 
 }
 
+####################################################
+###    Powerline
+####################################################
+powerline-daemon -q
+POWERLINE_BASH_CONTINUATION=1
+POWERLINE_BASH_SELECT=1
+. /usr/lib/python3.9/site-packages/powerline/bindings/bash/powerline.sh
+
+
 
 ####################################################
 ###    Miscelanious  Stuff for other programs
@@ -321,7 +335,7 @@ export PS1 PS2
 #fi
 
 # put a wallpaper on the root window if it doesn\'t exist already
-feh --bg-scale ~/wallpaper/SanFranGGBridge4K.jpg
+#feh --bg-scale ~/wallpaper/SanFranGGBridge4K.jpg
 
 
 # added by travis gem
