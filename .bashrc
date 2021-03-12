@@ -126,7 +126,7 @@ PS2="> "
 
 # Use liquidctl to set colors on corsair h100i platinum
 liq_led(){
-    liquidctl set led color fixed "rgb(11,45,138)"
+    liquidctl -d 4 set led color fixed "rgb(11,45,138)"
 }
 
 # create a blogpost for jekyll in ~/public_html/daveblog/
