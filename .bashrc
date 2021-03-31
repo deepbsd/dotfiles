@@ -311,6 +311,17 @@ else
 fi
 }
 
+sendkey(){
+    user=$(whoami)
+    remote_host=$1
+    if [[ -x $(which ssh-copy-id) ]]; then 
+        ssh-copy-id "$user"@"$remote_host"
+    else
+        cat ~/.ssh/id_rsa.pub | ssh "$user"@"$remote_host" 'tee -a .ssh/authorized_keys'
+    fi
+
+}
+
 # List contents of a zip file
 cz()
 {
