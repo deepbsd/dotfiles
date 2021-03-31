@@ -319,7 +319,16 @@ sendkey(){
     else
         cat ~/.ssh/id_rsa.pub | ssh "$user"@"$remote_host" 'tee -a .ssh/authorized_keys'
     fi
+}
 
+checkhosts(){
+    myhosts=()
+    if [[ -f ~/dotfiles/.my_machines.txt ]]; then
+        myhosts=( $(cat ~/dotfiles/.my_machines.txt | sed '/^$/d' | sed '/#.*$/d' | cut -d' ' -f1 | tr '[:upper:]' '[:lower:]') )
+    fi
+    for machine in ${myhosts[@]}; do
+        ( ping -c2 $machine &>/dev/null && echo "UP: $machine"  ) || echo "DOWN: $machine"
+    done
 }
 
 # List contents of a zip file

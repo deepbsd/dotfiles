@@ -36,7 +36,7 @@ Peanut  FX-8350  32G  GTX-1050  Arch
 
 Maui  Xeon 4-core  32G  Dual FirePro GPU  MacOS
 
-____  Core 2 Duo ____  8G Lenovo Thinkpad T410 Manjaro i3
+#____  Core 2 Duo ____  8G Lenovo Thinkpad T410 Manjaro i3
 
 Scee  FX-6300  16G RX-470  Arch
 
@@ -53,6 +53,3 @@ Zencat  Ryzen 5 2600  16G  GTX-1050ti  Arch
 Dolly  i5-6500T  32G  RX-580  Antergos
 
 Debbie  FX-8350  24G  GTX-1050ti  EndeavourOS
-
-
-
