@@ -201,10 +201,10 @@ Editing:
 For example, to move to a directory 'sample1'; Type cd sam ; then press TAB and ENTER.
 type just enough characters to uniquely identify the directory you wish to open.
 
-Special keys: Tab, Backspace, Enter, Esc
-Text Terminals send characters (bytes), not key strokes.
-Special keys such as Tab, Backspace, Enter and Esc are encoded as control characters.
-Control characters are not printable, they display in the terminal as ^ and are intended to have an effect on applications.
+Special keys: Tab, Backspace, Enter, Esc Text Terminals send characters (bytes), not key
+strokes.  Special keys such as Tab, Backspace, Enter and Esc are encoded as control
+characters.  Control characters are not printable, they display in the terminal as ^ and are
+intended to have an effect on applications.
 
 Ctrl+I = Tab
 Ctrl+J = Newline
@@ -220,8 +220,9 @@ Ctrl+6 : ^^
 Ctrl+7 : ^_ Undo
 Ctrl+8 : ^? Backward-delete-char
 
-Ctrl+v tells the terminal to not interpret the following character, so Ctrl+v Ctrl-I will display a tab character,
-similarly Ctrl+v ENTER will display the escape sequence for the Enter key: ^M
+Ctrl+v tells the terminal to not interpret the following character, so Ctrl+v Ctrl-I will
+display a tab character, similarly Ctrl+v ENTER will display the escape sequence for the Enter
+key: 
 
 History:
   Ctrl + r   Recall the last command including the specified character(s).
