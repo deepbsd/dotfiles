@@ -325,10 +325,13 @@ checkhosts(){
     myhosts=()
     if [[ -f ~/dotfiles/.my_machines.txt ]]; then
         myhosts=( $(cat ~/dotfiles/.my_machines.txt | sed '/^$/d' | sed '/#.*$/d' | cut -d' ' -f1 | tr '[:upper:]' '[:lower:]') )
+        for machine in ${myhosts[@]}; do
+            ( ping -c2 $machine &>/dev/null && echo "UP: $machine"  ) || echo "DOWN: $machine"
+        done
+    else
+        echo "Sorry, no .my_machines.txt file"
+        return 1
     fi
-    for machine in ${myhosts[@]}; do
-        ( ping -c2 $machine &>/dev/null && echo "UP: $machine"  ) || echo "DOWN: $machine"
-    done
 }
 
 # List contents of a zip file
