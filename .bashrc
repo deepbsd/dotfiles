@@ -309,6 +309,15 @@ export PS1 PS2
 
 }
 
+####################################################
+###    Powerline
+####################################################
+powerline-daemon -q
+POWERLINE_BASH_CONTINUATION=1
+POWERLINE_BASH_SELECT=1
+. /usr/lib/python3.9/site-packages/powerline/bindings/bash/powerline.sh
+
+
 
 ####################################################
 ###    Miscelanious  Stuff for other programs
@@ -321,7 +330,7 @@ export PS1 PS2
 #fi
 
 # put a wallpaper on the root window if it doesn\'t exist already
-feh --bg-scale ~/wallpaper/SanFranGGBridge4K.jpg
+#feh --bg-scale ~/wallpaper/SanFranGGBridge4K.jpg
 
 
 # added by travis gem
