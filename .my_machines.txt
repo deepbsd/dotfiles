@@ -1,4 +1,10 @@
+Catmaster  i9-9900K  32G  RX580  Arch
+
+Blub  i7-4790k 16G  RX-580  EndeavourOS
+
 Milo  i7-6700K  32G  GTX-1050ti  Linux Mint
+
+Daisy R7-2700X  32G  RX-580  Arch
 
 Omalley i7-7700 16G  Lenovo Thinkpad T470  Linux Mint
 
@@ -8,31 +14,31 @@ Erica  i7-2720 16G  Lenovo Thinkpad T420  Manjaro i3
 
 Speedy  i7-4700 16G 2015 Macbook Pro MacOS
 
-Jazzcat  Core 2 Duo T9600 8G Lenovo Thinkpad T400  Solus
+Jazzcat  Core 2 Duo T9600 8G Lenovo Thinkpad T400  Arch
 
 Kitty  Core 2 Duo P8700 8G Lenovo Thinkpad T400  Peppermint 10
 
-Peach  FX-6300  24G  GT720  Linux Mint
+Peach  FX-4300  24G  GT720  Arch
 
 Dixie  FX-6300  24G  GeForce 610  Ubuntu 18.40
 
-OfficeWinBox  i5-4690K  16G  GTX-970  Win10
+Windy  i5-4690K  16G  GTX-970  Arch
 
-Daisy  i7-4700 16G 2011 Macbook Pro   MacOS
+#Daisy  i7-4700 16G 2011 Macbook Pro   MacOS  # GPU melted
 
-Scee  i5-6600K 32G GTX-980ti  Antergos
+Pumpkin  i5-6600K 32G GTX-980ti  Arco
 
 Jarhead  A10-7850k  16G GTX-730  Manjaro Cinnamon
 
-Juno  i5-4690k  16G  GTX-770  Fedora 30
+Juno  i5-4690k  16G  GTX-770  Fedora 
 
-Peanut  FX-8350  32G  GTX-1050  Fedora 30
+Peanut  FX-8350  32G  GTX-1050  Arch
 
 Maui  Xeon 4-core  32G  Dual FirePro GPU  MacOS
 
-____  Core 2 Duo ____  8G Lenovo Thinkpad T410 Manjaro i3
+#____  Core 2 Duo ____  8G Lenovo Thinkpad T410 Manjaro i3
 
-Pumpkin  FX-8350  16G RX-470  OpenSUSE Tumbleweed
+Scee  FX-6300  16G RX-470  Arch
 
 Sylvester  i7-3220  16G  Lenovo Thinkpad T430  Solus
 
@@ -40,14 +46,10 @@ Minty i7-4700 24G Lenovo Thinkpad W540 Linux Mint
 
 Leo  Intel Core 2 ??  4G IBM/Lenovo Thinkpad T60  LXLE Linux
 
-Blub  i5-4690k 16G  RX-580  Fedora 30
-
-Zencat  Ryzen 5 2600  16G  GTX-1050ti  Manjaro Cinnamon
-
-Dolly  i5-6600K  32G  RX-580  Antergos
-
-Debbie  FX-8350  24G  GTX-1050ti  Debian Testing
-
 Tweety  Pentium-M  2G  IBM Thinkpad T30  AntiX
 
+Zencat  Ryzen 5 2600  16G  GTX-1050ti  Arch
 
+Dolly  i5-6500T  32G  RX-580  Antergos
+
+Debbie  FX-8350  24G  GTX-1050ti  EndeavourOS
