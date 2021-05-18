@@ -31,6 +31,7 @@ import socket
 import subprocess
 from libqtile.config import Drag, Key, Screen, Group, Drag, Click, Rule
 from libqtile.command import lazy
+#from libqtile.lazy import lazy
 from libqtile import layout, bar, widget, hook
 from libqtile.widget import Spacer
 #import arcobattery
@@ -41,6 +42,7 @@ mod = "mod4"
 mod1 = "alt"
 mod2 = "control"
 home = os.path.expanduser('~')
+terminal = "gnome-terminal"
 
 
 @lazy.function
@@ -58,6 +60,13 @@ def window_to_next_group(qtile):
 keys = [
 
 # Most of our keybindings are in sxhkd file - except these
+
+
+    # I don't currently use a sxhkd file so here's my terminal...
+    Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
+    # I am not using dmenu yet so here's how to spawn a command
+    #Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+    Key([mod], "r", lazy.spawn("rofi -show window"), desc="Spawn a command using rofi"),
 
 # SUPER + FUNCTION KEYS
 
@@ -194,7 +203,7 @@ for i in groups:
         #Key([mod, "Control"], "Right", lazy.screen.next_group()),
         Key(["mod1", "shift"], "Tab", lazy.screen.prev_group()),
         Key(["mod1", "control"], "Left", lazy.screen.prev_group()),
-        Key(["mod1", "control"], "Right", lazy.screen.prev_group()),
+        Key(["mod1", "control"], "Right", lazy.screen.next_group()),
 
 # MOVE WINDOW TO SELECTED WORKSPACE 1-10 AND STAY ON WORKSPACE
         #Key([mod, "shift"], i.name, lazy.window.togroup(i.name)),
@@ -292,6 +301,21 @@ def init_widgets_list():
                         foreground = colors[5],
                         background = colors[1],
                         ),
+                widget.Chord(
+                    chords_colors={
+                        'launch': ("#ff0000", "#ffffff"),
+                    },
+                    name_transform=lambda name: name.upper(),
+                ),
+                widget.TextBox("arco config", name="default"),
+                widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
+                widget.Systray(),
+               widget.Sep(
+                        linewidth = 1,
+                        padding = 10,
+                        foreground = colors[2],
+                        background = colors[1]
+                        ),
                # widget.Net(
                #          font="Noto Sans",
                #          fontsize=12,
@@ -326,22 +350,30 @@ def init_widgets_list():
                #          foreground = colors[2],
                #          background = colors[1]
                #          ),
+                widget.TextBox(
+                         font="FontAwesome",
+                         text="  ",
+                         foreground=colors[3],
+                         background=colors[1],
+                         padding = 0,
+                         fontsize=16
+                         ),
                # # do not activate in Virtualbox - will break qtile
-               # widget.ThermalSensor(
-               #          foreground = colors[5],
-               #          foreground_alert = colors[6],
-               #          background = colors[1],
-               #          metric = True,
-               #          padding = 3,
-               #          threshold = 80
-               #          ),
-               # # battery option 1  ArcoLinux Horizontal icons do not forget to import arcobattery at the top
-               # widget.Sep(
-               #          linewidth = 1,
-               #          padding = 10,
-               #          foreground = colors[2],
-               #          background = colors[1]
-               #          ),
+                widget.ThermalSensor(
+                         foreground = colors[5],
+                         foreground_alert = colors[6],
+                         background = colors[1],
+                         metric = True,
+                         padding = 3,
+                         threshold = 80
+                         ),
+                # battery option 1  ArcoLinux Horizontal icons do not forget to import arcobattery at the top
+                widget.Sep(
+                         linewidth = 1,
+                         padding = 10,
+                         foreground = colors[2],
+                         background = colors[1]
+                         ),
                # arcobattery.BatteryIcon(
                #          padding=0,
                #          scale=0.7,
@@ -422,7 +454,7 @@ def init_widgets_list():
                         foreground = colors[5],
                         background = colors[1],
                         fontsize = 12,
-                        format="%Y-%m-%d %H:%M"
+                        format="%Y-%m-%d %H:%M:%S"
                         ),
                # widget.Sep(
                #          linewidth = 1,
@@ -558,6 +590,7 @@ floating_layout = layout.Floating(float_rules=[
     {'wmclass': 'Galculator'},
     {'wmclass': 'arcolinux-logout'},
     {'wmclass': 'xfce4-terminal'},
+    {'wmclass': 'gkrellm'},
     {'wname': 'branchdialog'},
     {'wname': 'Open File'},
     {'wname': 'pinentry'},
