@@ -74,12 +74,14 @@ keys = [
     Key([mod], "q", lazy.window.kill()),
     Key([mod], "x", lazy.shutdown()),
 
+    Key([mod], "s", lazy.to_screen(0), desc="shift focus to first screen"),
 
 # SUPER + SHIFT KEYS
 
     Key([mod, "shift"], "q", lazy.window.kill()),
     Key([mod, "shift"], "r", lazy.restart()),
 
+    Key([mod, "shift"], "s", lazy.to_screen(1), desc="shift focus to second screen"),
 
 # QTILE LAYOUT KEYS
     Key([mod], "n", lazy.layout.normalize()),
