@@ -406,6 +406,8 @@ def init_widgets_list():
                          background = colors[1],
                          metric = True,
                          padding = 3,
+                         tag_sensor = "Core 0",
+                         update_interval = 0.5,
                          threshold = 80
                          ),
                 # battery option 1  ArcoLinux Horizontal icons do not forget to import arcobattery at the top
@@ -628,6 +630,7 @@ floating_layout = layout.Floating(float_rules=[
     {'wmclass': 'maketag'},
     {'wmclass': 'Arandr'},
     {'wmclass': 'feh'},
+    {'wmclass': 'nitrogen'},
     {'wmclass': 'Galculator'},
     {'wmclass': 'arcolinux-logout'},
     {'wmclass': 'xfce4-terminal'},
