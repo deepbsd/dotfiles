@@ -65,13 +65,14 @@ keys = [
     # I don't currently use a sxhkd file so here's my terminal...
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     # I am not using dmenu yet so here's how to spawn a command
-    #Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
-    Key([mod], "r", lazy.spawn("rofi -show window"), desc="Spawn a command using rofi"),
+    #Key([mod], "r", lazy.spawn("rofi -show window"), desc="Spawn a command using rofi"),
+    Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
 
 # SUPER + FUNCTION KEYS
 
     Key([mod], "f", lazy.window.toggle_fullscreen()),
     Key([mod], "q", lazy.window.kill()),
+    Key([mod], "x", lazy.shutdown()),
 
 
 # SUPER + SHIFT KEYS
@@ -301,15 +302,38 @@ def init_widgets_list():
                         foreground = colors[5],
                         background = colors[1],
                         ),
-                widget.Chord(
+               widget.Chord(
                     chords_colors={
                         'launch': ("#ff0000", "#ffffff"),
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.TextBox("arco config", name="default"),
-                widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
-                widget.Systray(),
+               widget.TextBox("Dave's Config", name="default", padding=5),
+               widget.TextBox("Press &lt;M-r&gt; to spawn", foreground=colors[3], padding=9),
+               widget.Prompt(
+                   prompt="run: ",
+                   ignore_dups_history=True,
+                   ),
+               #widget.Systray(),
+               widget.Sep(
+                        linewidth = 1,
+                        padding = 10,
+                        foreground = colors[2],
+                        background = colors[1]
+                        ),
+                widget.TextBox(
+                         font="FontAwesome",
+                         text="  ",
+                         foreground=colors[3],
+                         background=colors[1],
+                         padding = 0,
+                         fontsize=16
+                         ),
+               widget.CPU(
+                       foreground = "#ffffff",
+                       fontsize = 12,
+                       update_interval = 1.0,
+                       ),
                widget.Sep(
                         linewidth = 1,
                         padding = 10,
