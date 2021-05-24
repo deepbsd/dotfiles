@@ -83,7 +83,8 @@ keys = [
 
 # QTILE LAYOUT KEYS
     Key([mod], "n", lazy.layout.normalize()),
-    Key([mod], "space", lazy.next_layout()),
+    #Key([mod], "space", lazy.next_layout()),
+    Key([mod], "Tab", lazy.next_layout(), desc="Toggle layout"),
 
 # CHANGE FOCUS
     Key([mod], "Up", lazy.layout.up()),
@@ -197,9 +198,9 @@ for i in groups:
 
 #CHANGE WORKSPACES
         Key([mod], i.name, lazy.group[i.name].toscreen()),
-        Key([mod], "Tab", lazy.screen.next_group()),
-        Key([mod, "shift" ], "Tab", lazy.screen.prev_group()),
-        Key(["mod1"], "Tab", lazy.screen.next_group()),
+        #Key([mod], "Tab", lazy.screen.next_group()),
+        #Key([mod, "shift" ], "Tab", lazy.screen.prev_group()),
+        #Key(["mod1"], "Tab", lazy.screen.next_group()),
         #Key([mod, "Control" ], "Left", lazy.screen.prev_group()),
         #Key([mod, "Control"], "Right", lazy.screen.next_group()),
         Key(["mod1", "shift"], "Tab", lazy.screen.prev_group()),
@@ -225,11 +226,11 @@ layout_theme = init_layout_theme()
 
 layouts = [
     layout.MonadTall(margin=8, border_width=2, border_focus="#5e81ac", border_normal="#4c566a"),
-    layout.MonadWide(margin=8, border_width=2, border_focus="#5e81ac", border_normal="#4c566a"),
-    layout.Matrix(**layout_theme),
-    layout.Bsp(**layout_theme),
-    layout.Floating(**layout_theme),
-    layout.RatioTile(**layout_theme),
+    #layout.MonadWide(margin=8, border_width=2, border_focus="#5e81ac", border_normal="#4c566a"),
+    #layout.Matrix(**layout_theme),
+    #layout.Bsp(**layout_theme),
+    #layout.Floating(**layout_theme),
+    #layout.RatioTile(**layout_theme),
     layout.Max(**layout_theme)
 ]
 
