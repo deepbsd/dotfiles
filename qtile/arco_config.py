@@ -378,6 +378,21 @@ def init_widgets_list():
                #          ),
                 widget.TextBox(
                          font="FontAwesome",
+                         text=" ",
+                         foreground=colors[3],
+                         background=colors[1],
+                         padding = 0,
+                         fontsize=16
+                         ),
+                widget.Volume(),
+                widget.Sep(
+                         linewidth = 1,
+                         padding = 10,
+                         foreground = colors[2],
+                         background = colors[1]
+                         ),
+                widget.TextBox(
+                         font="FontAwesome",
                          text="  ",
                          foreground=colors[3],
                          background=colors[1],
