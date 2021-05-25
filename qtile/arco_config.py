@@ -168,7 +168,7 @@ keys = [
     Key([mod, "shift"], "Right", lazy.layout.swap_right()),
 
 # TOGGLE FLOATING LAYOUT
-    Key([mod, "shift"], "space", lazy.window.toggle_floating()),
+    Key([mod], "space", lazy.window.toggle_floating()),
 
     ]
 
@@ -408,7 +408,6 @@ def init_widgets_list():
                          background = colors[1],
                          metric = True,
                          padding = 3,
-                         tag_sensor = "Core 0",
                          update_interval = 0.5,
                          threshold = 80
                          ),

@@ -274,6 +274,59 @@ $ set -o emacs
 EOF
 }
 
+qtile_sc(){
+    clear
+cat << EOF | less
+BASIC QTILE COMMANDS (DAVE'S)
+==============================
+
+##        Misc commands
+mod + r                  spawn a command
+mod + q                  kill a window
+mod + Enter              launch a terminal
+mod + r                  spawn a command cli
+mod + ctrl + r           restart qtile
+
+mod + Tab                cycle layout
+mod + x                  exit qtile
+mod + n                  normalize layout
+
+mod + s                  focus to monitor 1
+mod + shift + s          focus to monitor 2
+mod + shift + f          flip layout (monad layouts only)
+
+mod1 + ctrl + Left       previous workspace
+mod1 + ctrl + Right      next workspace
+
+##         move window focus
+mod + Space              move focus to next window
+mod + h                  move focus to left window
+mod + l                  move focus to right window
+mod + j                  move focus to window below
+mod + k                  move focus to window above
+
+##         move window to group num
+mod + Shift + num        move window to group num
+
+##         move focus to group num
+mod + num                move focus to group num
+mod + ctrl + Left        move focus to previous group
+mod + ctrl + Right       move focus to next group
+
+##         grow window (arrow keys also work)
+mod + ctrl + h           grow window to left
+mod + ctrl + l           grow window to right
+mod + ctrl + j           grow window to down
+mod + ctrl + k           grow window to up
+
+##         move window inside current group
+mod + Shift + h          move window to left in stack
+mod + Shift + l          move window to right in stack
+mod + Shift + j          move window to down in stack
+mod + Shift + k          move window to up in stack
+EOF
+}
+
 # Create playlist for mpg123 on the fly
 #  *** this doesn't work on OSX yet ***
 mlist()
