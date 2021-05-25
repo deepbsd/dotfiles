@@ -65,7 +65,7 @@ keys = [
     # I don't currently use a sxhkd file so here's my terminal...
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     # I am not using dmenu yet so here's how to spawn a command
-    #Key([mod], "r", lazy.spawn("rofi -show window"), desc="Spawn a command using rofi"),
+    Key([mod, "control"], "r", lazy.spawn("rofi -show window"), desc="Spawn a command using rofi"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
 
 # SUPER + FUNCTION KEYS
