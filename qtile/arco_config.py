@@ -406,7 +406,7 @@ def init_widgets_list():
                          foreground = colors[5],
                          foreground_alert = colors[6],
                          background = colors[1],
-                         #tag_sensor = "Core 0",
+                         tag_sensor = "Core 0",   # this won't work for AMD CPUs
                          metric = True,
                          padding = 3,
                          update_interval = 0.5,
