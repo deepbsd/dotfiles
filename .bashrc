@@ -12,9 +12,7 @@ set -o emacs
 umask	022
 
 # set up environment for Arch
-if [ -f /etc/bash.bashrc ]; then
-    . /etc/bash.bashrc
-fi
+[ -f /etc/bash.bashrc ] && . /etc/bash.bashrc
 
 
 ###################################
@@ -505,7 +503,7 @@ export PS1 PS2
 powerline-daemon -q
 POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1
-. /usr/lib/python3.9/site-packages/powerline/bindings/bash/powerline.sh
+. /usr/lib/python3.10/site-packages/powerline/bindings/bash/powerline.sh
 
 
 
