@@ -129,6 +129,11 @@ liq_led(){
     liquidctl -d "$device" set led color fixed "rgb(11,45,138)"
 }
 
+sshadd(){
+    eval $(ssh-agent)
+    ssh-add 
+}
+
 # create a blogpost for jekyll in ~/public_html/daveblog/
 createpost()
 {
