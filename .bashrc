@@ -136,6 +136,10 @@ liq_led(){
 #    tar czvpf - $1 | gpg --symmetric -o $2
 #}
 
+#zip_decrypt(){
+#    gpg -d $1 | tar xzvf - 
+#}
+
 # create a blogpost for jekyll in ~/public_html/daveblog/
 createpost()
 {
