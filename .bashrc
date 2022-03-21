@@ -129,6 +129,13 @@ liq_led(){
     liquidctl -d "$device" set led color fixed "rgb(11,45,138)"
 }
 
+# Compress and encrypt all files in a path
+#  Something's wrong with this syntax: not working as expected.
+
+#zip_crypt(){
+#    tar czvpf - $1 | gpg --symmetric -o $2
+#}
+
 # create a blogpost for jekyll in ~/public_html/daveblog/
 createpost()
 {
