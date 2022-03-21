@@ -132,13 +132,13 @@ liq_led(){
 # Compress and encrypt all files in a path
 #  Something's wrong with this syntax: not working as expected.
 
-#zip_crypt(){
-#    tar czvpf - $1 | gpg --symmetric -o $2
-#}
+zip_crypt(){
+    tar czvpf - $1 | gpg --symmetric -o $2
+}
 
-#zip_decrypt(){
-#    gpg -d $1 | tar xzvf - 
-#}
+zip_decrypt(){
+    gpg -d $1 | tar xzvf - 
+}
 
 # create a blogpost for jekyll in ~/public_html/daveblog/
 createpost()
