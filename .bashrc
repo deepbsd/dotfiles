@@ -122,6 +122,12 @@ PS2="> "
 #   Functions
 #################################
 
+# ssh-agent
+sshagent(){
+    eval $(ssh-agent)
+    ssh-add
+}
+
 # Use liquidctl to set colors on corsair h100i platinum
 liq_led(){
     liquidctl list
