@@ -79,7 +79,7 @@ alias cp='cp -ip'
 ###################################
 
 export OREILLY='djackson@cold.oreillyschool.com:workspace'
-export GIT_CONFIG='$HOME/.gitconfig'
+export GIT_CONFIG=$HOME/.gitconfig
 export EDITOR=vim
 export PATH=$PATH:$HOME/bin:/usr/local/games:/usr/local/bin:/usr/lib/java/bin:/usr/local/heroku/bin:$HOME/.cargo/bin
 #export PGPPATH=/home/dsj/.pgp
