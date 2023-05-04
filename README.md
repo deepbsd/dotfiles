@@ -7,6 +7,8 @@ them work somewhat the same, at least where it comes to i3wm.  Also, since I'm
 jusing i3wm, there are far more terminal applications I'm enjoying, nearly all
 of which have their own dotfiles for configuration.  
 
+note: I mostly use cinnamon these days.  I still update these for various reasons.
+
 # Dependencies
 
 * fonts:  (Yosemite) System San Francisco Display, 
