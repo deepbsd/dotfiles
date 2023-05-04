@@ -409,12 +409,13 @@ checkhosts(){
 }
 
 # List contents of a zip file
-cz()
-{
-if [ test /usr/bin/unzip ]; then
-unzip -l $*
-else echo "unzip not installed..."
-fi
+cz(){
+
+    if $( test /usr/bin/unzip ); then
+        unzip -l $*
+    else 
+        echo "unzip not installed..."
+    fi
 }
 
 
