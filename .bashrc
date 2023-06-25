@@ -527,12 +527,17 @@ export PS1 PS2
 powerline-daemon -q
 POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1
-#. /usr/lib/python3.10/site-packages/powerline/bindings/bash/powerline.sh
+
+
 if  (grep -i 'debian' /etc/os-release > /dev/null ); then
     . /usr/share/powerline/bindings/bash/powerline.sh
 else
     .  /usr/lib/python3.11/site-packages/powerline/bindings/bash/powerline.sh
 fi
+
+# don't need this line with else clause
+#. /usr/lib/python3.11/site-packages/powerline/bindings/bash/powerline.sh
+
 
 
 
