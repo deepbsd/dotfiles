@@ -348,6 +348,10 @@ mod + Shift + k          move window to up in stack
 EOF
 }
 
+calc () { 
+    bc <<< "$@"; 
+}
+
 # Create playlist for mpg123 on the fly
 #  *** this doesn't work on OSX yet ***
 mlist()
