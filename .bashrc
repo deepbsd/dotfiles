@@ -536,7 +536,7 @@ POWERLINE_BASH_SELECT=1
 if  (grep -i 'debian' /etc/os-release > /dev/null ); then
     . /usr/share/powerline/bindings/bash/powerline.sh
 else
-    .  /usr/lib/python3.11/site-packages/powerline/bindings/bash/powerline.sh
+    .  /usr/lib/python3.13/site-packages/powerline/bindings/bash/powerline.sh
 fi
 
 # don't need this line with else clause
